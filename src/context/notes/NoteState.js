@@ -5,7 +5,7 @@ const NoteState = (props) => {
     
     const notesInitial = [
         {
-          "_id": "676fa3347f265fd9290453e2",
+          "_id": "676fa3347f265fd9290453e22",
           "user": "6755ae2f27d8ade0ba34db92",
           "title": "My first Note",
           "description": "Maine peheli baar naya db bnaya",
@@ -14,7 +14,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "676fa3347f265fd9290453e2",
+          "_id": "676fa3347f265fd92904353e2",
           "user": "6755ae2f27d8ade0ba34db92",
           "title": "My first Note 1",
           "description": "Maine peheli baar naya db bnaya",
@@ -23,7 +23,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "676fa3347f265fd9290453e2",
+          "_id": "676fa3347f2645fd9290453e2",
           "user": "6755ae2f27d8ade0ba34db92",
           "title": "My first Note 2",
           "description": "Maine peheli baar naya db bnaya",
@@ -32,7 +32,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "676fa3347f265fd9290453e2",
+          "_id": "676fa3347f2655fd9290453e2",
           "user": "6755ae2f27d8ade0ba34db92",
           "title": "My first Note 4",
           "description": "Maine peheli baar naya db bnaya",
@@ -41,7 +41,7 @@ const NoteState = (props) => {
           "__v": 0
         },
         {
-          "_id": "676fa3347f265fd9290453e2",
+          "_id": "676fa33467f265fd9290453e2",
           "user": "6755ae2f27d8ade0ba34db92",
           "title": "My first Note 3",
           "description": "Maine peheli baar naya db bnaya",
