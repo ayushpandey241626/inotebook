@@ -1,4 +1,3 @@
-import {react} from 'react';
 import NoteContext from './noteContext';
 import {useState} from 'react';
 const NoteState = (props) => {
@@ -55,7 +54,6 @@ const NoteState = (props) => {
     // Add a note
 
     const addNote = (title, description, tag) =>{
-      console.log('Adding a note')
       const note =  {
         "_id": "676fa3347f265fd92943530453e22",
         "user": "6755ae2f27d8ade0ba34db92",
@@ -68,8 +66,10 @@ const NoteState = (props) => {
       setNotes(notes.concat(note))
     }
     // Delete a note
-    const deleteNote = () =>{
-      
+    const deleteNote = (id) =>{
+      console.log("Deleing a note testing" + id)
+      const newNotes = notes.filter((note) => {return note._id !== id})
+      setNotes(newNotes)
     }
 
     // Edit a note
