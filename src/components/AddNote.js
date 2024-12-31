@@ -2,11 +2,12 @@ import React,{ useContext,useState } from "react";
 import noteContext from "../context/notes/noteContext";
 
 const AddNote = () => {
-    const [note, setNote] = useState({ title: "", description: "", tag: "default" });
+    const [note, setNote] = useState({ title: "", description: "", tag: "" });
     const context = useContext(noteContext);
     const handleClick = (e) => {
         e.preventDefault();
         addNote(note.title, note.description, note.tag);
+        setNote({ title: "", description: "", tag: "" });
      };
     const onChange = (e) => {
         setNote({...note,[e.target.name]: e.target.value});
@@ -24,6 +25,9 @@ const AddNote = () => {
                             className="form-control"
                             id="title"
                             name="title"
+                            minLength={5}
+                            required
+                            value={note.title}
                             aria-describedby="emailHelp"
                             placeholder="Enter Title"
                             onChange={onChange}
@@ -36,6 +40,9 @@ const AddNote = () => {
                             className="form-control"
                             id="description"
                             name="description"
+                            minLength={5}
+                            value={note.description}
+                            required
                             placeholder="Enter Description"
                             onChange={onChange}
                         />
@@ -46,6 +53,9 @@ const AddNote = () => {
                             type="text"
                             className="form-control"
                             id="tag"
+                            minLength={5}
+                            value={note.tag}
+                            required                          
                             name="tag"
                             placeholder="Enter Tag"
                             onChange={onChange}
@@ -55,6 +65,7 @@ const AddNote = () => {
                         type="submit"
                         onClick={handleClick}
                         className="btn btn-primary my-3"
+                        disabled={note.title.length<5 || note.description.length<5}
                     >
                         Add Note
                     </button>

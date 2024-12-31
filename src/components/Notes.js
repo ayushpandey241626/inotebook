@@ -18,7 +18,6 @@ const Notes = () => {
   const refClose = useRef(null);
 
   const handleClick = (e) => {
-    console.log("Updating the note",e);
     editNote(note.id,note.etitle, note.edescription, note.etag);
     refClose.current.click();
     e.preventDefault();
@@ -73,6 +72,8 @@ const Notes = () => {
                   <label htmlFor="title">Title</label>
                   <input
                     type="text"
+                    minLength={5}
+                    required
                     value={note.etitle}
                     className="form-control"
                     id="etitle"
@@ -88,6 +89,8 @@ const Notes = () => {
                     type="text"
                     value={note.edescription}
                     className="form-control"
+                    minLength={5}
+                    required
                     id="edescription"
                     name="edescription"
                     placeholder="Enter Description"
@@ -100,6 +103,8 @@ const Notes = () => {
                     type="text"
                     className="form-control"
                     value={note.etag}
+                    minLength={5}
+                    required
                     id="etag"
                     name="etag"
                     placeholder="Enter Tag"
@@ -117,7 +122,7 @@ const Notes = () => {
               >
                 Close
               </button>
-              <button  type="button" onClick={handleClick} className="btn btn-primary">
+              <button disabled={note.etitle.length<5 || note.edescription.length<5} type="button" onClick={handleClick} className="btn btn-primary">
                 Update Note
               </button>
             </div>
@@ -126,6 +131,9 @@ const Notes = () => {
       </div>
       <div className="row my-3">
         <h2> Your Notes </h2>
+        <div className="container mx-2">
+        {notes.length === 0 && "No notes to display"}
+        </div>
         {notes.map((note) => {
           return (
             <Noteitem key={note._id} updateNote={updateNote} note={note} />
