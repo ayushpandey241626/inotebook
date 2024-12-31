@@ -25,7 +25,7 @@ const AddNote = () => {
                             id="title"
                             name="title"
                             aria-describedby="emailHelp"
-                            placeholder="Enter email"
+                            placeholder="Enter Title"
                             onChange={onChange}
                         />
                     </div>
@@ -36,24 +36,25 @@ const AddNote = () => {
                             className="form-control"
                             id="description"
                             name="description"
-                            placeholder="Password"
+                            placeholder="Enter Description"
                             onChange={onChange}
                         />
                     </div>
-                    <div className="form-check">
+                    <div className="form-group">
+                        <label htmlFor="tag">Tag</label>
                         <input
-                            type="checkbox"
-                            className="form-check-input"
-                            id="exampleCheck1"
+                            type="text"
+                            className="form-control"
+                            id="tag"
+                            name="tag"
+                            placeholder="Enter Tag"
+                            onChange={onChange}
                         />
-                        <label className="form-check-label" htmlFor="exampleCheck1">
-                            Check me out
-                        </label>
                     </div>
-                    <button
+                    <button 
                         type="submit"
                         onClick={handleClick}
-                        className="btn btn-primary"
+                        className="btn btn-primary my-3"
                     >
                         Add Note
                     </button>

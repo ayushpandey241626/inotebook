@@ -24,9 +24,6 @@ const NoteState = (props) => {
       setNotes(json)
     }
 
-
-
-
     // Add a note
     const addNote = async (title, description, tag) =>{
 
@@ -52,7 +49,19 @@ const NoteState = (props) => {
       setNotes(notes.concat(note))
     }
     // Delete a note
-    const deleteNote = (id) =>{
+    const deleteNote = async (id) =>{
+
+      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NWFlMmYyN2Q4YWRlMGJhMzRkYjkyIn0sImlhdCI6MTczMzY2ODQxOX0.CCap6eO9h1JpObD2v8ajZYoUA2bC0rlkLzRxumz6oQI"
+        }
+      });
+      const json = await response.json(); 
+      console.log(json)
+
+
       const newNotes = notes.filter((note) => {return note._id !== id})
       setNotes(newNotes)
     }
@@ -68,7 +77,14 @@ const NoteState = (props) => {
         },
         body: JSON.stringify({title, description, tag})
       });
-      const json = await response.json(); 
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Error: ${errorText}`);
+      }
+    
+      const json = await response.json();
+      console.log(json);
+     
   
        let newNotes = JSON.parse(JSON.stringify(notes))
       // Logic to edit in client
