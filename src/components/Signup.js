@@ -21,7 +21,7 @@ const handleSubmit = async (e) =>{
       const json = await response.json();
       console.log(json);
       if(json.success){
-        localStorage.setItem('token',json.authtoken)
+        localStorage.setItem('authToken',json.authToken)
         history("/")
         props.showAlert("Account created successfully","success")
       } else {
@@ -32,6 +32,7 @@ const handleSubmit = async (e) =>{
   return (
     <>
       <div className="container">
+        <h2>Signup to continue to iNoteBook</h2>
         <form onSubmit={handleSubmit}>
 
           <div className="mb-3">
