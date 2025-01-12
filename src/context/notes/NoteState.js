@@ -25,21 +25,27 @@ const NoteState = (props) => {
     }
 
     // Add a note
-    const addNote = async (title, description, tag) =>{
-
-      const response = await fetch(`${host}/api/notes/addnote`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NWFlMmYyN2Q4YWRlMGJhMzRkYjkyIn0sImlhdCI6MTczMzY2ODQxOX0.CCap6eO9h1JpObD2v8ajZYoUA2bC0rlkLzRxumz6oQI"
-        },
-        body: JSON.stringify({title, description, tag})
-      });
-      const json = await response.json(); 
-
-      console.log(json)
-      const note = await response.json();
-      setNotes(notes.concat(note))
+    const addNote = async (title, description, tag) => {
+      try {
+        const response = await fetch(`${host}/api/notes/addnote`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            "auth-token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjc1NWFlMmYyN2Q4YWRlMGJhMzRkYjkyIn0sImlhdCI6MTczMzY2ODQxOX0.CCap6eO9h1JpObD2v8ajZYoUA2bC0rlkLzRxumz6oQI"
+          },
+          body: JSON.stringify({ title, description, tag })
+        });
+    
+        if (!response.ok) {
+          throw new Error('Failed to add note');
+        }
+    
+        const note = await response.json();
+        console.log(note);
+        setNotes(notes.concat(note));
+      } catch (error) {
+        console.error('Error adding note:', error);
+      }
     }
     // Delete a note
     const deleteNote = async (id) =>{
